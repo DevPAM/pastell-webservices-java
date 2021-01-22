@@ -1,9 +1,9 @@
-package ca.web.services.pastell.v3;
+package ca.web.services.pastell.v3.entity;
 
 import ca.utils.web.exceptions.headers.KeyHeaderNullException;
 import ca.utils.web.exceptions.headers.ValueHeaderNullException;
 import ca.web.services.pastell.PastellWebService;
-import ca.web.services.pastell.v3.sources.GETPastellService;
+import ca.web.services.pastell.v3.sources.get.GETPastellService;
 
 /** Get service to get the detail of an entity. */
 public class DetailEntity extends GETPastellService {

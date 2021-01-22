@@ -5,9 +5,10 @@ import ca.utils.web.exceptions.headers.ValueHeaderNullException;
 import ca.utils.web.exceptions.send.ConnectionNullException;
 import ca.utils.web.webservices.WebService;
 import ca.utils.web.webservices.WebServiceAuthentication;
-import ca.web.services.pastell.v3.DetailEntity;
-import ca.web.services.pastell.v3.GetVersion;
-import ca.web.services.pastell.v3.ListEntities;
+import ca.web.services.pastell.v3.entity.CreateEntity;
+import ca.web.services.pastell.v3.entity.DetailEntity;
+import ca.web.services.pastell.v3.entity.GetVersion;
+import ca.web.services.pastell.v3.entity.ListEntities;
 
 import java.io.IOException;
 
@@ -37,31 +38,40 @@ public class PastellWebService extends WebServiceAuthentication {
         if(System.getProperty("javax.net.ssl.trustStorePassword") == null) System.setProperty("javax.net.ssl.trustStorePassword", keystorepassword);
     }
     /** Get Pastell's API version.
-     * @throws KeyHeaderNullException
-     * @throws ValueHeaderNullException
-     * @throws IOException
-     * @throws ConnectionNullException */
+     * @throws KeyHeaderNullException Fired if a header key is not entered.
+     * @throws ValueHeaderNullException Fired if a value key is not entered.
+     * @throws IOException Launched in case of input / output.
+     * @throws ConnectionNullException Fired if the connection is null. */
     public String getVersion() throws KeyHeaderNullException, ValueHeaderNullException, IOException, ConnectionNullException {
         GetVersion service = new GetVersion(this);
         return service.call();
     }
     /** Get Pastell's entities.
-     * @throws KeyHeaderNullException
-     * @throws ValueHeaderNullException
-     * @throws IOException
-     * @throws ConnectionNullException*/
+     * @throws KeyHeaderNullException Fired if a header key is not entered.
+     * @throws ValueHeaderNullException Fired if a value key is not entered.
+     * @throws IOException Launched in case of input / output.
+     * @throws ConnectionNullException Fired if the connection is null. */
     public String listEntities() throws KeyHeaderNullException, ValueHeaderNullException, IOException, ConnectionNullException {
         ListEntities service = new ListEntities(this);
         return service.call();
     }
     /** Get Pastell entity's detail.
      * @param entity_id An entity id.
-     * @throws KeyHeaderNullException
-     * @throws ValueHeaderNullException
-     * @throws IOException
-     * @throws ConnectionNullException */
+     * @throws KeyHeaderNullException Fired if a header key is not entered.
+     * @throws ValueHeaderNullException Fired if a value key is not entered.
+     * @throws IOException Launched in case of input / output.
+     * @throws ConnectionNullException Fired if the connection is null. */
     public String getEntityDetail(int entity_id) throws KeyHeaderNullException, ValueHeaderNullException, IOException, ConnectionNullException {
         DetailEntity service = new DetailEntity(this, entity_id);
+        return service.call();
+    }
+    /** Create a new entity to the service.
+     * @throws KeyHeaderNullException Fired if a header key is not entered.
+     * @throws ValueHeaderNullException Fired if a value key is not entered.
+     * @throws IOException Launched in case of input / output.
+     * @throws ConnectionNullException Fired if the connection is null. */
+    public String createEntity(String denomination, String type, String siren) throws KeyHeaderNullException, ValueHeaderNullException, IOException, ConnectionNullException {
+        CreateEntity service = new CreateEntity(this, denomination, type, siren);
         return service.call();
     }
 }

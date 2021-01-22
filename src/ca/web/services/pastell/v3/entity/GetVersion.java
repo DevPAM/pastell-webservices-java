@@ -1,10 +1,10 @@
-package ca.web.services.pastell.v3;
+package ca.web.services.pastell.v3.entity;
 
 import ca.utils.web.exceptions.headers.KeyHeaderNullException;
 import ca.utils.web.exceptions.headers.ValueHeaderNullException;
-import ca.utils.web.webservices.services.GETService;
+import ca.utils.web.webservices.services.get.GETService;
 import ca.web.services.pastell.PastellWebService;
-import ca.web.services.pastell.v3.sources.GETPastellService;
+import ca.web.services.pastell.v3.sources.get.GETPastellService;
 
 /** Service that get the web service version. */
 public class GetVersion extends GETPastellService {
