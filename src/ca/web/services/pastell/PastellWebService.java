@@ -27,15 +27,15 @@ public class PastellWebService extends WebServiceAuthentication {
      * @param login The API's login.
      * @param password the API's password.
      * @param keystore The path to the keystore.
-     * @param keystorepassword The keystore's password.
+     * @param keystore_password The keystore password.
      * @throws Exception If the web service address is null or empty. */
-    public PastellWebService(String address, String login, String password, String keystore, String keystorepassword) throws Exception {
+    public PastellWebService(String address, String login, String password, String keystore, String keystore_password) throws Exception {
         super(address, login, password);
         // Set the keystore ans key keystore password.
         // keystore : "C:\\personnel\\developpement\\certificats\\publickey.store"
         // password : "cg59500
         if(System.getProperty("javax.net.ssl.trustStore") == null) System.setProperty("javax.net.ssl.trustStore", keystore);
-        if(System.getProperty("javax.net.ssl.trustStorePassword") == null) System.setProperty("javax.net.ssl.trustStorePassword", keystorepassword);
+        if(System.getProperty("javax.net.ssl.trustStorePassword") == null) System.setProperty("javax.net.ssl.trustStorePassword", keystore_password);
     }
     /** Get Pastell's API version.
      * @throws KeyHeaderNullException Fired if a header key is not entered.
